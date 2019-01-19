@@ -13,7 +13,7 @@ RUN apt-get update &&\
 
 RUN npm install yarn -g
 
-RUN rm -f /etc/nginx/sites-enabled/default
-RUN rm -f /etc/service/nginx/down
+RUN rm -f /etc/nginx/sites-enabled/default \
+          /etc/service/nginx/down
 
-ADD files/nginx.conf /etc/nginx/sites-enabled/default
+ADD files/nginx-vhost.conf /etc/nginx/sites-enabled/default
