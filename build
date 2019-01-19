@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+set -o pipefail
+
+docker image build \
+  -t jtreminio/node10-passenger:latest \
+  -f Dockerfile-10 \
+  .
+
+cat << EOF
+Push to Docker Hub with:
+
+docker image push jtreminio/node10-passenger:latest
+EOF

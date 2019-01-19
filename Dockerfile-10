@@ -1,0 +1,19 @@
+FROM phusion/passenger-nodejs
+LABEL maintainer="Juan Treminio <jtreminio@gmail.com>"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+SHELL ["/bin/bash", "-c"]
+
+# Upgrade Node
+RUN apt-get update &&\
+    apt-get install --only-upgrade nodejs &&\
+    apt-get -y --purge autoremove &&\
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/{man,doc}
+
+RUN npm install yarn -g
+
+RUN rm -f /etc/nginx/sites-enabled/default
+RUN rm -f /etc/service/nginx/down
+
+ADD files/nginx.conf /etc/nginx/sites-enabled/default
