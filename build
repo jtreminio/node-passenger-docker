@@ -3,12 +3,14 @@ set -e
 set -o pipefail
 
 docker image build \
-  -t jtreminio/node10-passenger:latest \
+  -t jtreminio/node-passenger:latest \
+  -t jtreminio/node-passenger:10 \
   -f Dockerfile-10 \
   .
 
 cat << EOF
 Push to Docker Hub with:
 
-docker image push jtreminio/node10-passenger:latest
+docker image push jtreminio/node-passenger:latest
+docker image push jtreminio/node-passenger:10
 EOF
