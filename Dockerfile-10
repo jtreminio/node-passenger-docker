@@ -16,4 +16,4 @@ RUN npm install yarn -g
 RUN rm -f /etc/nginx/sites-enabled/default \
           /etc/service/nginx/down
 
-ADD files/nginx-vhost.conf /etc/nginx/sites-enabled/default
+ADD files/vhost.conf /etc/nginx/sites-enabled/default
